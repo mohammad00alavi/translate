@@ -14,7 +14,6 @@ export default function App() {
 				Select a language:{" "}
 				<i onClick={() => languageChange("english")} class="us flag"></i>{" "}
 				<i onClick={() => languageChange("dutch")} class="nl flag"></i>
-				{lang}
 			</div>
 			<UserCreate />
 		</div>
