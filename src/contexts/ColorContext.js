@@ -1,3 +1,5 @@
 import React from "react";
 
-export default React.createContext();
+const ColorContext = React.createContext();
+ColorContext.displayName = "ColorContext";
+export default ColorContext;
