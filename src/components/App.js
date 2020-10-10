@@ -14,8 +14,11 @@ export default function App() {
 				{langCol.language === "english"
 					? "Select a language : "
 					: "Selecteer een taal : "}
-				<i onClick={() => languageChange("english", "red")} class="us flag"></i>
-				<i onClick={() => languageChange("dutch", "yellow")} class="nl flag"></i>
+				<i onClick={() => languageChange("english", "red")} className="us flag"></i>
+				<i
+					onClick={() => languageChange("dutch", "yellow")}
+					className="nl flag"
+				></i>
 			</div>
 			<LanguageContexts.Provider value={langCol.language}>
 				<ColorContext.Provider value={langCol.color}>
