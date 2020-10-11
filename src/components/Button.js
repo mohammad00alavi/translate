@@ -1,19 +1,11 @@
-import React from "react";
-import LanguageContexts from "../contexts/LanguageContexts";
-import ColorContext from "../contexts/ColorContext";
+import React, { useContext } from "react";
+import { Context } from "../contexts/MainProvider";
 
 export default function Button() {
-	const renderSubmit = value => {
-		return value === "english" ? "Submit" : "Voorleggen";
-	};
-	const renderButton = color => {
-		return (
-			<button className={`ui button ${color}`}>
-				<LanguageContexts.Consumer>
-					{value => renderSubmit(value)}
-				</LanguageContexts.Consumer>
-			</button>
-		);
-	};
-	return <ColorContext.Consumer>{color => renderButton(color)}</ColorContext.Consumer>;
+	const { color, language } = useContext(Context);
+	return (
+		<button className={`ui button ${color}`}>
+			{language === "english" ? "Submit" : "Voorleggen"}
+		</button>
+	);
 }

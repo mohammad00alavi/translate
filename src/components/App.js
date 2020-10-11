@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import UserCreate from "./UserCreate";
-import LanguageContexts from "../contexts/LanguageContexts";
-import ColorContext from "../contexts/ColorContext";
+import { Context } from "../contexts/MainProvider";
 
 export default function App() {
 	const [langCol, setLangCol] = useState({ language: "english", color: "red" });
@@ -20,11 +19,9 @@ export default function App() {
 					className="nl flag"
 				></i>
 			</div>
-			<LanguageContexts.Provider value={langCol.language}>
-				<ColorContext.Provider value={langCol.color}>
-					<UserCreate />
-				</ColorContext.Provider>
-			</LanguageContexts.Provider>
+			<Context.Provider value={langCol}>
+				<UserCreate />
+			</Context.Provider>
 		</div>
 	);
 }
