@@ -8,8 +8,16 @@ export default class MainProvider extends React.Component {
 		this.state = {
 			color: "",
 			language: "",
+			languageChange: this.languageChange
 		};
 	}
+
+	languageChange = (language, firstLang, secondLang) => {
+		return (
+			language === "english" ? firstLang : secondLang
+		)
+	}
+
 	render() {
 		return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
 	}

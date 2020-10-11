@@ -13,11 +13,8 @@ export default function App() {
 				{langCol.language === "english"
 					? "Select a language : "
 					: "Selecteer een taal : "}
-				<i onClick={() => languageChange("english", "red")} className="us flag"></i>
-				<i
-					onClick={() => languageChange("dutch", "yellow")}
-					className="nl flag"
-				></i>
+				<i onClick={() => languageChange("english", "red")} className="us flag" />
+				<i onClick={() => languageChange("dutch", "yellow")} className="nl flag" />
 			</div>
 			<Context.Provider value={langCol}>
 				<UserCreate />
