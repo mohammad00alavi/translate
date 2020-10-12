@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import UserCreate from "./UserCreate";
 import { Context } from "../contexts/MainProvider";
 
 export default function App() {
-	const [langCol, setLangCol] = useState({ language: "english", color: "red" });
-	const languageChange = (language, color) => {
-		setLangCol({ language, color });
+	const { setValue, currentLang, languages } = useContext(Context);
+
+	const languageChange = lang => {
+		setValue({ currentLang: lang });
 	};
+
 	return (
 		<div className="ui container">
 			<div>
-				{langCol.language === "english"
-					? "Select a language : "
-					: "Selecteer een taal : "}
-				<i onClick={() => languageChange("english", "red")} className="us flag" />
-				<i onClick={() => languageChange("dutch", "yellow")} className="nl flag" />
+				{languages[currentLang].text}
+				{Object.keys(languages).map(lang => (
+					<i
+						onClick={() => languageChange(lang)}
+						className={languages[lang].country + " flag"}
+						key={languages[lang].key}
+					/>
+				))}
 			</div>
-			<Context.Provider value={langCol}>
-				<UserCreate />
-			</Context.Provider>
+			<UserCreate />
 		</div>
 	);
 }

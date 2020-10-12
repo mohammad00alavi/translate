@@ -6,17 +6,41 @@ export default class MainProvider extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			color: "",
-			language: "",
-			languageChange: this.languageChange
+			languages: {
+				en: {
+					language: "English",
+					color: "red",
+					country: "us",
+					text: "Select a language : ",
+					name: "Name",
+					btnText: "Submit",
+					key: 1,
+				},
+				de: {
+					language: "Deutsch",
+					color: "yellow",
+					country: "nl",
+					text: "Selecteer een taal : ",
+					name: "Naam",
+					btnText: "Voorleggen",
+					key: 2,
+				},
+				fa: {
+					language: "فارسی",
+					color: "green",
+					country: "ir",
+					text: "زبان را انتخاب کنید : ",
+					name: "نام",
+					btnText: "تایید",
+					key: 3,
+				},
+			},
+			currentLang: "en",
+			setValue: this.setValue,
 		};
 	}
 
-	languageChange = (language, firstLang, secondLang) => {
-		return (
-			language === "english" ? firstLang : secondLang
-		)
-	}
+	setValue = value => this.setState(value);
 
 	render() {
 		return <Context.Provider value={this.state}>{this.props.children}</Context.Provider>;
